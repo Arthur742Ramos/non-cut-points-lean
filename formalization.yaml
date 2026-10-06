@@ -1,0 +1,111 @@
+{
+  "version": "v0.4",
+  "project": {
+    "name": "Non-Cut Points of Hausdorff Continua",
+    "description": "Every nontrivial compact connected subset of a Hausdorff space contains two distinct points whose individual removals leave connected sets. A compact connected subset containing all non-cut points of a compact connected set equals that set.",
+    "authors": [
+      "Arthur Freitas Ramos",
+      "David Barros Hulak",
+      "Ruy Jose Guerra Barretto de Queiroz"
+    ],
+    "responsible_maintainers": [
+      "Arthur Freitas Ramos",
+      "David Barros Hulak",
+      "Ruy Jose Guerra Barretto de Queiroz"
+    ],
+    "license": "Apache-2.0"
+  },
+  "repository": {
+    "role": "substantive-development"
+  },
+  "classification": {
+    "arxiv": [
+      "math.GN"
+    ],
+    "msc2020": [
+      "54D05",
+      "54D30",
+      "54F15"
+    ]
+  },
+  "sources": [
+    {
+      "title": "Metric Topology: A First Course",
+      "type": "paper",
+      "id": "https://www.mscsnet.mu.edu/~paul/Paper/4450102text.pdf#page=91",
+      "location": "Paul Bankston, Lecture 29, Propositions 29.1 and 29.3, printed pages 91 through 93",
+      "relationship": "formalizes",
+      "note": "Proposition 29.3 states both non-cut point existence and irreducibility about the set of non-cut points for nondegenerate Hausdorff continua. Proposition 29.1 supplies connectedness after adjoining a connected removed set.",
+      "author_endorsement": "not-contacted"
+    }
+  ],
+  "related_formalizations": [
+    {
+      "id": "https://github.com/leanprover-community/mathlib4/tree/065356127b1dc0016f66b7283ce0ce2c4055aa55",
+      "relationship": "builds-on",
+      "note": "Uses compact directed intersection nonemptiness, open/closed separation and Zorn. A complete tracked-source scan at the exact Mathlib pin covered 9123 Lean files and 211 candidates; no equivalent selected target was located."
+    }
+  ],
+  "status": {
+    "scope": "Two distinct individually removable non-cut points in a nontrivial compact connected Hausdorff set; equality for a compact connected subset containing every non-cut point.",
+    "sorry_count": 0,
+    "sorry_in_definitions": 0,
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "automation": {
+    "methods": [
+      {
+        "method": "agent",
+        "models": [
+          "OpenAI Codex (model identifier not recorded)"
+        ],
+        "framework": "Lean 4 and Mathlib",
+        "tool_setup": "One serial compiler, bounded Windows Job Object stages, fresh source builds, complete type and universe comparison, explicit predicate value comparison, and transitive axiom audit."
+      },
+      {
+        "method": "agent",
+        "models": [
+          "OpenAI Codex (model identifier not recorded)"
+        ],
+        "framework": "Lean 4 and Mathlib",
+        "tool_setup": "Independent mathematical source review and serial strict compiler, exact theorem/predicate type and value, universe and axiom checks, plus metadata, dependency-provenance and public-package checks within one CPU and 3 GiB."
+      }
+    ],
+    "spend_usd": "not tracked",
+    "notes": "Human direction selected target, scope, proof route, and resource constraints. Challenge has two intentional theorem holes, excluded from Solution admission counts."
+  },
+  "fidelity": {
+    "divergences": "Uses arbitrary compact connected subsets of a Hausdorff space, with no metric, local connectedness, path connectedness, or ambient CompactSpace premise. Removal in the first theorem is individual, not simultaneous. The second statement uses an explicit non-cut predicate and also permits singleton C. Its proof only needs connectedness of K; compactness of K is retained in the selected subcontinuum statement. The singleton union case of Proposition 29.1 is proved locally. Zorn orders oriented tails by reverse inclusion; a point in a chain intersection supplies another tail as a lower bound. Cut sides themselves are never assumed connected."
+  },
+  "review": {
+    "status": "Independent AI review approved both full-scope non-cut-point statements, the exposed predicate and the reviewed 16-file public source snapshot. The reviewer checked the mathematical argument and independently repeated strict compilation, an isolated dependency-only Challenge, exact theorem types and universes, predicate type and value, a literal predicate check, and transitive axioms. The reviewer also verified the exact JSON metadata against the official schema and intake validators, source requirements, dependency byte provenance, the duplicate assessment, archive integrity and public privacy whitelist. No mathematical or local Lean proof blocker was found. Review-status metadata and reader prose were subsequently refreshed and revalidated locally; the approved proof and Challenge bytes are unchanged. The changed final archive bytes were hash-verified locally and are not claimed as a second independent source review. A clean dependency rebuild, ordinary Lake build, GitHub Actions execution, hosted Comparator, NanoDa and con-ron independent kernel replay, and human mathematical review remain unrun.",
+    "approved_proof_sha256": {
+      "Solution.lean": "fdc0c91140a39018927697a3b5e269dc13effb9b01b70ca4c4ce8823795af3a3",
+      "Challenge.lean": "417f31eba95783ed48f846e53563676f22442d66e5fd9033551346092f998a6d"
+    },
+    "reviewed_metadata_sha256": "77286d0cbeb4fe20b5cc4494f39e6e0632eab4394de6fae060876a6147fea34d",
+    "reviewed_public_archive_sha256": "5b0a51580f65d54c3c48ab4459847fea7e7298976ac187b42af676abf217a408"
+  },
+  "alignment": {
+    "namespace": "NonCutPoints",
+    "statements": [
+      {
+        "source": "Proposition 29.3, existence of two non-cut points",
+        "lean": "NonCutPoints.exists_two_noncut_points",
+        "module": "Solution",
+        "status": "proved"
+      },
+      {
+        "source": "Proposition 29.3, irreducibility about non-cut points",
+        "lean": "NonCutPoints.eq_of_contains_noncut_points",
+        "module": "Solution",
+        "status": "proved"
+      }
+    ]
+  },
+  "acknowledgements": "Credits Paul Bankston, Lean and Mathlib contributors. No mathematical novelty, author endorsement, registry acceptance, or completed human mathematical review is claimed."
+}

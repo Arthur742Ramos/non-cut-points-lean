@@ -1,0 +1,30 @@
+name: Lean CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+          set-safe-directory: false
+      - name: Check package headers, sizes, and pins
+        run: python3 scripts/verify.py --check-package-only
+      - name: Install the pinned Lean toolchain
+        uses: leanprover/lean-action@f061402b660e0c34644504b324e830f2991d4865 # v1
+        with:
+          auto-config: "false"
+          build: "false"
+          use-github-cache: "false"
+          use-mathlib-cache: "false"
+      - name: Build and verify
+        run: python3 scripts/verify.py --lake-build --output .lake/verification.json
